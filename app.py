@@ -1,25 +1,27 @@
+import os
+import re
+import sys
+import pdfplumber
 import streamlit as st
+from bluehole_scan import repair_company_name
 
-# 상단 헤더, 하단 푸터 및 우측 아래 뱃지 숨기기
+# 1. 무조건 최상단에 위치해야 합니다.
+st.set_page_config(page_title="파일명 변경 및 블루홀 업로드기", layout="wide")
+
+# 2. 우측 하단 뱃지 및 메뉴 전체 숨기기 CSS
 hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     [data-testid="stDecoration"] {display: none;}
+    [data-testid="stStatusWidget"] {display: none;}
+    [data-testid="stToolbar"] {display: none;}
     div[class*="viewerBadge"] {display: none !important;}
+    div[class*="stActionButton"] {display: none !important;}
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-import os
-import re
-import sys
-import streamlit as st
-import pdfplumber
-
-from bluehole_scan import repair_company_name
-
-st.set_page_config(page_title="파일명 변경 및 블루홀 업로드기", layout="wide")
 
 st.markdown(
     """
