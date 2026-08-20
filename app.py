@@ -5,20 +5,28 @@ import pdfplumber
 import streamlit as st
 from bluehole_scan import repair_company_name
 
-# 1. 무조건 최상단에 위치해야 합니다.
+# 1. 최상단 배치 필수
 st.set_page_config(page_title="파일명 변경 및 블루홀 업로드기", layout="wide")
 
-# 2. 우측 하단 뱃지 및 메뉴 전체 숨기기 CSS
+# 2. 우측 하단 뱃지 및 메뉴 완벽 숨기기
 hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    [data-testid="stDecoration"] {display: none;}
-    [data-testid="stStatusWidget"] {display: none;}
-    [data-testid="stToolbar"] {display: none;}
+    
+    /* 우측 하단 뱃지 및 플로팅 버튼 완벽 제거 */
+    .stApp > header {data-testid: "stHeader"; display: none;}
+    [data-testid="stStatusWidget"] {display: none !important;}
+    [data-testid="stDecoration"] {display: none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
     div[class*="viewerBadge"] {display: none !important;}
     div[class*="stActionButton"] {display: none !important;}
+    #GithubIcon {visibility: hidden;}
+    
+    /* 화면 맨 아래 플로팅 요소 강제 숨김 */
+    div[data-testid="stElementToolbar"] {display: none !important;}
+    .viewerBadge_container__1A53K {display: none !important;}
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
