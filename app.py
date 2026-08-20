@@ -1,3 +1,16 @@
+import streamlit as st
+
+# 상단 헤더, 하단 푸터 및 우측 아래 뱃지 숨기기
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    [data-testid="stDecoration"] {display: none;}
+    div[class*="viewerBadge"] {display: none !important;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 import os
 import re
 import sys
